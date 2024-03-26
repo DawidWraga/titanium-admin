@@ -8,7 +8,17 @@ import { useState } from "react";
 import { getUrl, transformer } from "./shared";
 import { ServiceRouter } from "@/services";
 
-const createQueryClient = () => new QueryClient();
+const createQueryClient = () =>
+  new QueryClient({
+    defaultOptions: {
+      mutations: {
+        networkMode: "always",
+      },
+      queries: {
+        networkMode: "always",
+      },
+    },
+  });
 
 let clientQueryClientSingleton: QueryClient | undefined = undefined;
 const getQueryClient = () => {
