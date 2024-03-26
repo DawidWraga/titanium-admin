@@ -10,6 +10,7 @@ import {
   ServiceContext,
   createServiceContext,
 } from "@/services/configure-services";
+import { saveErrorLog } from "@/services/save-error-log";
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
@@ -47,7 +48,14 @@ export const createTRPCContext = async (opts: { headers: Headers }) => {
  */
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
-  errorFormatter({ shape, error }) {
+
+  errorFormatter: async ({ shape, error, path }) => {
+    const serviceContext = await createServiceContext();
+    await saveErrorLog(serviceContext, {
+      message: error.message,
+      statusCode: error.code,
+      path: path,
+    });
     return {
       ...shape,
       data: {

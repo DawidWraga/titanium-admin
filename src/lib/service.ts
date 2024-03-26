@@ -189,15 +189,6 @@ export function createResolver<
    * Useful for safe calling the resolver directly
    */
   const callerWithParser = async (ctx: ServiceContext, input: any) => {
-    // const isOnlyAuthed = def.accessLevel === "authed";
-    // if (isOnlyAuthed) {
-    //   const hasId =
-    //     ctx.user?.id !== undefined &&
-    //     ctx.user.id !== null &&
-    //     ctx.user.id !== "";
-    //   if (!hasId) throw new Error("User is not logged in");
-    // }
-
     const maybeParsedInput = def.inputSchema
       ? def.inputSchema.parse(input)
       : input;

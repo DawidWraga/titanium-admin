@@ -1,0 +1,15 @@
+[2024-03-26T17:12:36.950Z] [live-results] [sync.Races] [INTERNAL_SERVER_ERROR] Connection is closed.
+[2024-03-26T17:12:36.989Z] [live-results] [undefined] [INTERNAL_SERVER_ERROR] Failed to connect to localhost:1433 - Could not connect (sequence)
+[2024-03-26T17:12:58.271Z] [live-results] [sync.Races] [INTERNAL_SERVER_ERROR] Connection is closed.
+[2024-03-26T17:12:59.559Z] [live-results] [sync.Races] [INTERNAL_SERVER_ERROR] Connection is closed.
+[2024-03-26T17:13:00.376Z] [live-results] [sync.Races] [INTERNAL_SERVER_ERROR] Connection is closed.
+[2024-03-26T17:13:00.913Z] [live-results] [sync.Races] [INTERNAL_SERVER_ERROR] Connection is closed.
+[2024-03-26T17:15:15.411Z] [live-results] [undefined] [INTERNAL_SERVER_ERROR] Failed to connect to localhost:1433 - Could not connect (sequence)
+[2024-03-26T17:16:22.587Z] [live-results] [undefined] [INTERNAL_SERVER_ERROR] Failed to connect to localhost:1433 - Could not connect (sequence)
+[2024-03-26T17:16:39.946Z] [live-results] [sync.Events] [INTERNAL_SERVER_ERROR] Connection is closed.
+[2024-03-26T17:17:07.350Z] [live-results] [sync.Events] [INTERNAL_SERVER_ERROR] Connection is closed.
+[2024-03-26T17:19:01.077Z] [live-results] [undefined] [INTERNAL_SERVER_ERROR] Failed to connect to localhost:1433 - Could not connect (sequence)
+[2024-03-26T17:19:14.164Z] [live-results] [undefined] [INTERNAL_SERVER_ERROR] Failed to connect to localhost:1433 - Could not connect (sequence)
+[2024-03-26T17:19:16.097Z] [live-results] [sync.Races] [INTERNAL_SERVER_ERROR] Connection is closed.
+[2024-03-26T17:19:36.096Z] [live-results] [undefined] [INTERNAL_SERVER_ERROR] Failed to connect to localhost:1433 - Could not connect (sequence)
+[2024-03-26T17:21:23.387Z] [live-results] [undefined] [INTERNAL_SERVER_ERROR] Failed to connect to localhost:1433 - Could not connect (sequence)
