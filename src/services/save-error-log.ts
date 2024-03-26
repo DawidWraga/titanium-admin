@@ -28,12 +28,16 @@ export const saveErrorLog = service()
       }
     });
 
-    // Insert the log into the database
-    await ctx.mysqlRemoteDb?.query(
-      `
+    try {
+      // Insert the log into the database
+      await ctx.mysqlRemoteDb?.query(
+        `
       INSERT INTO \`dbo.Logs\` (LogTime, LogService, LogMessage, LogStatusCode, LogPath)
       VALUES (NOW(), 'live-results', ?, ?, ?)
     `,
-      [input.message, input.statusCode, input.path],
-    );
+        [input.message, input.statusCode, input.path],
+      );
+    } catch (error) {
+      console.error("Failed to insert error log into database:", error);
+    }
   });
