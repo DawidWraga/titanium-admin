@@ -67,16 +67,17 @@ export function IntervalSelect(props: IntervalSelectProps) {
   const isCustom = intervalValue === "custom";
 
   useEffect(() => {
+    // console.log("INTERVAL CHANGED: ", { intervalValue, customIntervalValue });
     if (!intervalValue) return;
     if (intervalValue === "manual") return setSyncInterval(null);
-    if (customIntervalValue)
+    if (isCustom && customIntervalValue)
       return setSyncInterval(parseInt(customIntervalValue) * 1000);
 
-    if (intervalValue === "default" || intervalValue === "slow") {
-      const intervalNumber = parseInt(intervalValue);
-      console.log("intervalNumber: ", intervalNumber);
-      setSyncInterval(intervalNumber);
-    }
+    const intervalNumber = parseInt(intervalValue);
+    // console.log("intervalNumber: ", intervalNumber);
+    setSyncInterval(intervalNumber);
+    // if (intervalValue === "default" || intervalValue === "slow") {
+    // }
   }, [intervalValue, customIntervalValue]);
 
   return (
