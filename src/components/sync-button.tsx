@@ -12,8 +12,8 @@ export function SyncButton(props: SyncButtonProps) {
   const syncEnabled = useGlobalStore((state) => state.syncEnabled);
   const enableSync = useGlobalStore((state) => state.enableSync);
   const disableSync = useGlobalStore((state) => state.disableSync);
-  const setSyncDisabledTurnedOffDueToConnectionError = useGlobalStore(
-    (s) => s.setSyncDisabledTurnedOffDueToConnectionError,
+  const setSyncDisabledDueToOffline = useGlobalStore(
+    (s) => s.setSyncDisabledDueToOffline,
   );
 
   const isOnline = useOnlineStatus();
@@ -34,7 +34,7 @@ export function SyncButton(props: SyncButtonProps) {
             enableSync();
           }
 
-          setSyncDisabledTurnedOffDueToConnectionError(false);
+          setSyncDisabledDueToOffline(false);
         }}
       >
         {syncEnabled
