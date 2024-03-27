@@ -203,6 +203,7 @@ const MultiSelect = React.forwardRef((props: MultiSelectProps, ref) => {
 
     if (selected.length === options.length) return "all";
     return selected.length + "";
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
   return (

@@ -49,19 +49,11 @@ export function IsOnlineIndicator() {
     syncEnabled,
     enableSync,
     turnOffSyncDueToConnectionError,
-    syncDisabledTurnedOffDueToConnectionError,
-    setSyncDisabledTurnedOffDueToConnectionError,
+    syncDisabledDueToOffline,
+    setSyncDisabledDueToOffline,
   } = useGlobalStore();
 
   useEffect(() => {
-    console.log("HERE: ", {
-      isOnline,
-      syncEnabled,
-      enableSync,
-      turnOffSyncDueToConnectionError,
-      syncDisabledTurnedOffDueToConnectionError,
-      setSyncDisabledTurnedOffDueToConnectionError,
-    });
     if (!isOnline) {
       turnOffSyncDueToConnectionError();
       saveErrorLogMutation.mutate({
@@ -73,19 +65,20 @@ export function IsOnlineIndicator() {
       return;
     }
 
-    if (isOnline && syncDisabledTurnedOffDueToConnectionError) {
+    if (isOnline && syncDisabledDueToOffline) {
       enableSync();
       saveErrorLogMutation.mutate({
         message: "REGAINED CONNECTION. TURNING ON SYNC",
         statusCode: "SYNC-AUTO-ON",
         path: "not relevant",
       });
-      setSyncDisabledTurnedOffDueToConnectionError(false);
+      setSyncDisabledDueToOffline(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOnline]);
   return (
     <div className="flex items-center gap-1">
-      {syncDisabledTurnedOffDueToConnectionError && (
+      {syncDisabledDueToOffline && (
         <span className="m-1 rounded-md bg-slate-100 p-1 text-lg font-medium text-red-500">
           Sync paused due to connection error. Will retry when connection is
           back.

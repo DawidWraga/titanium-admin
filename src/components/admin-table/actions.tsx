@@ -72,11 +72,8 @@ export function Actions(props: ActionsProps) {
             </DialogHeader>
             {logs.map((log, i) => {
               return (
-                <>
-                  <div
-                    key={i + operation.dbTableName + log.date.toISOString()}
-                    className="flex flex-col text-center sm:text-left"
-                  >
+                <div key={i + operation.dbTableName + log.date.toISOString()}>
+                  <div className="flex flex-col text-center sm:text-left">
                     <div className="flex items-center justify-between">
                       {log.status === "success" ? (
                         <span className="text-green-700">
@@ -97,7 +94,7 @@ export function Actions(props: ActionsProps) {
                     <pre>{log.message}</pre>
                   </div>
                   <hr />
-                </>
+                </div>
               );
             })}
           </DialogContent>
