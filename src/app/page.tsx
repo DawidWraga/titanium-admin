@@ -4,6 +4,7 @@ import { EventsSelect } from "@/components/events-select";
 import { RaceName } from "@/components/race-name";
 import { RunAllOnceButton } from "@/components/run-all-once-button";
 import { SyncButton } from "@/components/sync-button";
+import { IsOnlineIndicator } from "@/lib/online-status-context";
 
 export default async function Home() {
   return (
@@ -11,11 +12,14 @@ export default async function Home() {
       <div className="flex flex-col gap-2">
         <div className="flex items-end justify-between">
           <RaceName />
-          <div className="flex items-center gap-1">
-            <EventsSelect />
-            <RunAllOnceButton />
+          <div className="flex flex-col items-end gap-1">
+            <IsOnlineIndicator />
+            <div className="flex items-end gap-1">
+              <EventsSelect />
+              <RunAllOnceButton />
 
-            <SyncButton />
+              <SyncButton />
+            </div>
           </div>
         </div>
         <AdminTable />

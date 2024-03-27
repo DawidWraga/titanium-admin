@@ -10,6 +10,9 @@ interface GlobalStore {
   selectedEvents: string[];
   setSelectedEvents: (events: string[]) => void;
   syncTableDbNameToLastSyncedAt: Partial<Record<SyncDbTableName, Date>>;
+  syncDisabledTurnedOffDueToConnectionError: boolean;
+  turnOffSyncDueToConnectionError: () => void;
+  setSyncDisabledTurnedOffDueToConnectionError: (value: boolean) => void;
 }
 
 export const eventsData = [
@@ -34,6 +37,14 @@ export const useGlobalStore = create<GlobalStore>()(
         syncEnabled: false,
         enableSync: () => set({ syncEnabled: true }),
         disableSync: () => set({ syncEnabled: false }),
+        syncDisabledTurnedOffDueToConnectionError: false,
+        setSyncDisabledTurnedOffDueToConnectionError: (value: boolean) =>
+          set({ syncDisabledTurnedOffDueToConnectionError: value }),
+        turnOffSyncDueToConnectionError: () =>
+          set({
+            syncEnabled: false,
+            syncDisabledTurnedOffDueToConnectionError: true,
+          }),
         selectedEvents: [],
         setSelectedEvents: (events: string[]) =>
           set({ selectedEvents: events }),

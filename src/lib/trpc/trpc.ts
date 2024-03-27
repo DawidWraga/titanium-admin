@@ -50,12 +50,16 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
 
   errorFormatter: async ({ shape, error, path }) => {
-    const serviceContext = await createServiceContext();
-    await saveErrorLog(serviceContext, {
-      message: error.message,
-      statusCode: error.code,
-      path: path,
-    });
+    try {
+      const serviceContext = await createServiceContext();
+      await saveErrorLog(serviceContext, {
+        message: error.message,
+        statusCode: error.code,
+        path: path,
+      });
+    } catch (error) {
+      console.error("Failed to save error log:", error);
+    }
     return {
       ...shape,
       data: {

@@ -203,7 +203,7 @@ const deleteFromRemoteIfNotInRacetec = async <TItem extends { RaceId: string }>(
   const [result] = await mysqlRemoteDb.execute(deleteQuery);
   const deletedCount = (result as any).affectedRows;
 
-  console.log(`Deleted ${deletedCount} items from ${tableName}`);
+  // console.log(`Deleted ${deletedCount} items from ${tableName}`);
 
   if (deletedCount === MAX_DELETE_COUNT) {
     console.warn(

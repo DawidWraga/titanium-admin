@@ -16,6 +16,7 @@ import { syncSplits } from "@/services/sync/sync-splits";
 import { syncAthleteResults } from "@/services/sync/sync-athlete-results";
 import { syncAthleteSplits } from "@/services/sync/sync-athlete-splits";
 import { getDefaultRaceDetails } from "@/services/default-race-details";
+import { saveErrorLog } from "@/services/save-error-log";
 export const syncServices = {
   Races: syncRaces,
   Events: syncEvents,
@@ -33,6 +34,7 @@ export const serviceRouter = createTRPCRouter({
   count: createServiceRouter(countServices),
   ping: createTRPCProcedure(pingDatabase),
   getDefaultRaceDetails: createTRPCProcedure(getDefaultRaceDetails),
+  saveErrorLog: createTRPCProcedure(saveErrorLog),
 });
 
 export type ServiceRouter = typeof serviceRouter;

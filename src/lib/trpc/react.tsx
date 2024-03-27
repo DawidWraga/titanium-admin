@@ -3,19 +3,23 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { loggerLink, unstable_httpBatchStreamLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { getUrl, transformer } from "./shared";
 import { ServiceRouter } from "@/services";
+import { useOnlineStatus } from "@/lib/online-status-context";
 
 const createQueryClient = () =>
   new QueryClient({
     defaultOptions: {
       mutations: {
-        networkMode: "always",
+        retry: false,
+
+        // networkMode: "always",
       },
       queries: {
-        networkMode: "always",
+        // networkMode: "always",
+        refetchOnReconnect: false,
       },
     },
   });
